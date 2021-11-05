@@ -1,0 +1,309 @@
+/*All colors========================================================*/
+:root {
+    // bg
+    --btn: #089BAB;
+    --footer: #007383;
+    --background: #F7F7FB;
+    --input: #efeff1;
+    --notification: #e7e5ead7;
+    --notification2: #e7e5ea54;
+    --notif-number: #F04037;
+    --switch-btn: #C4C4C4;
+
+    
+    // color
+    --main-text: #12022F;
+    --header-text: #696871;
+    --about-text: #594D6D;
+    --login-text:#089BAB;
+    --modal-text:#07B069;
+    
+    
+  }
+  
+  // https://chir.ag/projects/name-that-color - color names
+  
+  $all-colors: (
+    bg-colors: (
+      bondi-blue: var(--btn),
+      blue-lagoon: var(--footer),
+      whisper: var(--background),
+      mischka: var(--input),
+      lilac: var(--notification),
+      lilac2: var(--notification2),
+      pomegranate: var(--notif-number),
+      silver: var(--switch-btn)
+    ),
+    
+    text-colors: (
+      bondi-blue2: var(--login-text),
+      black-rock: var(--main-text),
+      mid-gray: var(--header-text),
+      mulled-wine: var(--about-text),
+      green-haze: var(--modal-text)
+     
+    )
+  );
+  
+  /* Background colors=============================================================== */
+  @include make-colors(map-get($all-colors, bg-colors), bg);
+  
+  /* Text colors=============================================================== */
+  @include make-colors(map-get($all-colors, text-colors));
+
+  /*Rectangles====================================*/
+  $rectangles: (
+  xs: (17: 20, 72: 40)
+  
+  );
+
+  @include make-shape($rectangles);
+
+
+  /*Squares===============================================================*/
+  $squares: (
+    xs: ( 14: 14, 16: 16, 18: 18, 20: 20, 22: 22, 24: 24, 28: 28, 30: 30, 34: 34, 40:40, 48: 48, 56: 56, 88: 88)
+  );
+
+  @include make-shape($squares, square);
+
+  /*Heights===============================================================*/
+  $heights:1, 8, 23, 32, 34, 40, 48, 56, 140, 152, 224, 240, 540, 950, 1030;
+  @each $height in $heights {
+    .h-#{$height} { height: #{$height}px }
+  }
+
+  /*Widths===============================================================*/
+  $widths:10, 15, 17, 27, 50, 112, 137, 156, 174, 184, 464,  585, 800;
+  @each $width in $widths {
+    .w-#{$width} { width: #{$width}px };
+   
+  }
+  .w-230{width: 230.31px;}
+ 
+
+  /* Borders ===============================================================*/
+  $border-colors: #12022F, #12022f4a, #FFFFFF, #E7E5EA, #ffffff85, #089BAB, #007383;
+  @each $brd-color in $border-colors {
+    $brd-color: str-replace(to-string($brd-color), '#', '');
+    .border-#{$brd-color} { border-color: #{'#'}#{$brd-color} }
+  }
+
+
+  /* Border radius=============================================================== */
+  $radius: 2, 4, 8, 11, 12, 16,  20,  28, 32, 40, 50, 60, 70;
+  @each $rad in $radius {
+    .radius-#{$rad} { border-radius: #{$rad}px }
+
+    
+  }
+  .radius-bot-left{border-radius: 0 0 27px  27px;}
+
+
+  /* Icons=============================================================== */
+  $icons: lock, location, mail, massage, needle, phone, system, user, arrow, notification, profile, down, phone-call, file, file-text, message, log-out, corner-down, info, triangle, check-circle, close;
+  @each $icon in $icons {
+    .icon-#{$icon} { background-image: url("../img/icons/"+ $icon +".svg") }
+  }
+
+  /*Images===============================================================*/
+  $images:  header , login-bg, signup-bg,;
+  @each $image in $images {
+    .img-#{$image} { background-image: url("../img/"+ $image +".svg") }
+  }
+  
+
+/*Input styles===============================================================*/
+input , textarea{color: #12022fa1;}
+
+input::-webkit-input-placeholder{
+    color: #12022F;
+    opacity: 0.7;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: -0.36px;
+    transition: all .4s ease;
+}
+
+textarea::-webkit-input-placeholder{
+   color: #12022F;
+   opacity: 0.7;
+   font-size: 16px;
+   line-height: 26px;
+   letter-spacing: -0.36px;
+   font-family: 'DM Sans', sans-serif;
+   transition: all .4s ease;
+}
+
+:focus::-webkit-input-placeholder{opacity: 1;}
+
+.checkmark{
+  transition: all .6s ease;
+}
+
+.checkmark::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 6px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  border-radius: 1px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateZ(-50deg);
+  opacity: 0;
+  transition: all .6s ease;
+}
+ 
+#check:checked ~ .checkmark {
+   background-color: #089BAB;
+}
+
+#check:checked ~ .checkmark::after {
+  opacity: 1;
+}
+
+/*Others===========================================================*/
+.number-pos{
+  top: -6px;
+  right: -4px;
+}
+
+.top-48{top: 48px;}
+.right-15{right: 15px;}
+
+.box-shadow{box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);}
+
+.box:hover{
+  border-color: #089BAB;
+  background-color:  rgba(8, 155, 171, 0.05);;
+}
+
+.price-hover:hover{
+  border-color: #089BAB;
+
+}
+
+.arrow-hover .icon{filter: invert(48%) sepia(29%) saturate(1904%) hue-rotate(144deg) brightness(91%) contrast(94%);}
+.arrow-hover:hover{background-color: #089BAB;}
+.arrow-hover:hover .icon{filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(330deg) brightness(102%) contrast(101%);}
+
+.icon-down{filter: invert(48%) sepia(29%) saturate(1904%) hue-rotate(144deg) brightness(91%) contrast(94%);}
+
+.close-btn,
+.map{
+  display: none;
+}
+
+
+/*Map open close, on Order Map modal*/
+.close-btn.active{@extend .d-flex-xy;}
+.map.active{display: block;}
+
+
+/*Switch-btn on-off*/
+.switch-btn > .inner-circle{transition: .8s ease}
+.switch-btn.on > .inner-circle{
+    @extend .bg-bondi-blue;
+    margin-left: 36px!important;
+}
+
+/*DropDown===========================================================================*/
+
+.js-is-active {
+  
+
+  .action-dropdown { 
+    visibility: visible;
+    opacity: 1;
+  }
+  .action-dropdown-notification { 
+    visibility: visible;
+    opacity: 1;
+   }
+  
+  .icon-down{filter: invert(24%) sepia(40%) saturate(2064%) hue-rotate(243deg) brightness(57%) contrast(116%);}
+
+  
+  @at-root &.js-action-btn {
+    .action-dropdown{
+      border-top: transparent;
+    }
+    border-radius: 27px 27px 0 0;
+    border-bottom: transparent;
+  }
+}
+
+.action-dropdown {
+  
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  border: 1px solid #e7e5ea;
+  background-color: $color-white;
+  pointer-events: auto;
+  @extend .fs-14;
+  @extend .color-black-rock;
+
+  > * { cursor: pointer; pointer-events: auto }
+  
+
+  &-notification {
+    min-width: 288px;
+    top: 45px;
+    right: -50px;
+  }
+
+  &-user{
+    right: -9px;
+    top: 40px;
+  }
+}
+
+.js-action-btn{
+
+  .action-dropdown::before{
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: -16px;
+    border: 8px solid white;
+    border-color:transparent transparent white transparent ;
+  }
+
+  .action-dropdown::before::after{
+    border: 1px solid #e7e5ea;
+  }
+
+}
+
+.js-notification{
+
+  .action-dropdown::before{
+    content: '';
+    position: absolute;
+    right: 58px;
+    top: -16px;
+    border: 8px solid white;
+    border-color:transparent transparent white transparent ;
+  }
+
+}
+
+.js-user-btn{
+
+  .action-dropdown::before{
+    content: '';
+    position: absolute;
+    right: 16px;
+    top: -15px;
+    border: 8px solid white;
+    border-color:transparent transparent white transparent ;
+  }
+
+}
+
+
+.hover-notification:hover{background-color: #F7F7FB;}
+

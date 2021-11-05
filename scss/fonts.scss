@@ -1,0 +1,61 @@
+
+
+/* Font weights =========================================================*/
+@for $i from 4 through 7 {
+  .fw-#{$i * 100} { font-weight: #{$i * 100} }
+}
+
+/* Line heights========================================================= */
+$line-heights: 14, 16, 18, 24, 26, 28, 30, 32, 34, 36, 37, 46, 56;
+@each $lh in $line-heights {
+  .lh-#{$lh} { line-height: #{$lh}px }
+}
+
+
+
+
+/* Font sizes =========================================================*/
+$font-sizes: 11, 12, 14, 16, 18, 20, 22, 24, 26, 30, 32, 36, 48;
+@each $size in $font-sizes {
+  .fs-#{$size} { font-size: #{$size}px }
+}
+
+
+/* Letter spacing========================================================= */
+
+.ls-4 { letter-spacing: 4px }
+
+
+@media (min-width: map-get($break-points-config, lg)) {
+/*Font sizes=========================================================*/
+  $font-sizes: 14, 16, 18, 20, 24, 32, 35, 48, 60;
+  @each $size in $font-sizes {
+    .fs-lg-#{$size} { font-size: #{$size}px }
+  }
+/*Line heights=========================================================*/
+  $line-heights: 22, 24, 26, 28, 32, 34, 37, 40, 45, 48, 56, 78;
+  @each $lh in $line-heights {
+    .lh-lg-#{$lh} { line-height: #{$lh}px }
+  }
+
+  /* Font weights========================================================= */
+    @for $i from 7 through 7 {
+    .fw-lg-#{$i * 100} { font-weight: #{$i * 100} }
+  }
+}
+
+@media (min-width: 1200px) {
+  /*Font sizes=========================================================*/
+    $font-sizes:  18, 48;
+    @each $size in $font-sizes {
+      .fs-xl-#{$size} { font-size: #{$size}px }
+    }
+
+    
+  /*Line heights=========================================================*/
+   
+    .lh-xl-56 { line-height: 56px }
+    
+  
+  }
+  
